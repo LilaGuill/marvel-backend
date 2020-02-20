@@ -88,4 +88,22 @@ router.post("/user/favorites", async (req, res) => {
   }
 });
 
+router.post("/user/favorites/remove", async (req, res) => {
+  try {
+    const userFavorites = await await User.findOne({ token: req.fields.token });
+
+    await userFavorites.updateOne({
+      $pull: { favorites: { id: req.fields.id } }
+    });
+
+    const updatedFavorite = await await User.findOne({
+      token: req.fields.token
+    });
+
+    res.json(updatedFavorite);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
 module.exports = router;
