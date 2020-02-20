@@ -40,7 +40,6 @@ router.post("/comics", async (req, res) => {
       );
       res.json(response.data.data);
     } else {
-      console.log("sansid");
       const response = await axios.get(
         `http://gateway.marvel.com/v1/public/comics?orderBy=title&limit=${limit}&offset=${offset}&ts=${ts}&apikey=${process.env.MARVEL_PUBLIC_KEY}&hash=${hash}`
       );

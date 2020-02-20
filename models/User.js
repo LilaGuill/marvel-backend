@@ -9,7 +9,8 @@ const User = mongoose.model("User", {
   account: {
     username: { type: String, unique: true, lowercase: true },
     phone: { type: String }
-  }
+  },
+  favorites: { type: Array }
 });
 
 module.exports = User;

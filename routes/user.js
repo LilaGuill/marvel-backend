@@ -23,7 +23,8 @@ router.post("/user/signup", async (req, res) => {
           account: {
             username: req.fields.username,
             phone: req.fields.phone
-          }
+          },
+          favorites: []
         });
         await newUser.save();
         res.json({
@@ -56,6 +57,34 @@ router.post("/user/login", async (req, res) => {
     }
   } catch (error) {
     return res.status(400).json({ message: "An error occurred" });
+  }
+});
+
+router.post("/user/addfavorites", async (req, res) => {
+  try {
+    const { id, name, description, imgSrc, type } = req.fields;
+    const userAddFavorites = await User.findOne({ token: req.fields.token });
+
+    userAddFavorites.favorites.push({
+      id: id,
+      name: name,
+      description: description,
+      imgSrc: imgSrc,
+      type: type
+    });
+    await userAddFavorites.save();
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+router.post("/user/favorites", async (req, res) => {
+  try {
+    const userFavorites = await User.find({ token: req.fields.token });
+
+    res.json(userFavorites);
+  } catch (error) {
+    res.json({ message: error.message });
   }
 });
 
