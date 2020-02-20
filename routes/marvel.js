@@ -32,6 +32,24 @@ router.post("/comics", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+router.get("/comics/all", async (req, res) => {
+  try {
+    const ts = generateTs();
+    const hash = generateHash(ts);
+    const search = req.fields.search;
+    const page = req.fields.page;
+    const limit = 100;
+    const offset = limit * page - 100;
+
+    const response = await axios.get(
+      `http://gateway.marvel.com/v1/public/comics?orderBy=title&limit=${limit}&offset=${offset}&ts=${ts}&apikey=${process.env.MARVEL_PUBLIC_KEY}&hash=${hash}`
+    );
+
+    res.json(response.data.data);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 router.post("/search/charactere", async (req, res) => {
   try {
