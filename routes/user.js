@@ -89,14 +89,16 @@ router.post("/user/favorites", async (req, res) => {
 });
 
 router.post("/user/favorites/remove", async (req, res) => {
+  console.log(req.fields);
   try {
     const userFavorites = await await User.findOne({ token: req.fields.token });
 
-    await userFavorites.updateOne({
+    const removeFavorites = await userFavorites.updateOne({
       $pull: { favorites: { id: req.fields.id } }
     });
+    console.log(removeFavorites);
 
-    const updatedFavorite = await await User.findOne({
+    const updatedFavorite = await await User.find({
       token: req.fields.token
     });
 
