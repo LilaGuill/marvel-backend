@@ -63,16 +63,27 @@ router.post("/user/login", async (req, res) => {
 router.post("/user/addfavorites", async (req, res) => {
   try {
     const { id, name, description, imgSrc, type } = req.fields;
-    const userAddFavorites = await User.findOne({ token: req.fields.token });
-
-    userAddFavorites.favorites.push({
-      id: id,
-      name: name,
-      description: description,
-      imgSrc: imgSrc,
-      type: type
+    const userAddFavorites = await await User.findOne({
+      token: req.fields.token
     });
-    await userAddFavorites.save();
+
+    const find = userAddFavorites.favorites.find(ref => {
+      if (ref.id === id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (!find) {
+      await userAddFavorites.favorites.push({
+        id: id,
+        name: name,
+        description: description,
+        imgSrc: imgSrc,
+        type: type
+      });
+      await userAddFavorites.save();
+    }
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -89,14 +100,11 @@ router.post("/user/favorites", async (req, res) => {
 });
 
 router.post("/user/favorites/remove", async (req, res) => {
-  console.log(req.fields);
   try {
     const userFavorites = await await User.findOne({ token: req.fields.token });
-
-    const removeFavorites = await userFavorites.updateOne({
+    await userFavorites.updateOne({
       $pull: { favorites: { id: req.fields.id } }
     });
-    console.log(removeFavorites);
 
     const updatedFavorite = await await User.find({
       token: req.fields.token
