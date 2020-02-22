@@ -16,9 +16,10 @@
 
 - Route marvel:
 
-  - search comics : axios request to marvel api
-  - get characters : axios request to marvel api
-  - get comics by id : axios request to marvel api
+  - search comics : axios request to Marvel api
+  - get characters : axios request to Marvel api
+  - get comics by id : axios request to Marvel api
+  - marvel api : https://developer.marvel.com/
 
 - Route user :
   - signup : create crypted password and token, both are saved in mongoDB Database
