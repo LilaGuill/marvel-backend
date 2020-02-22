@@ -1,4 +1,4 @@
-<h1 align="center">Marvel API</h1>
+<h1 align="center">Marvel backend</h1>
 
 ## Server
 
@@ -30,8 +30,8 @@
 Clone this repository :
 
 ```
-git clone https://github.com/LilaGuill/marvel-back
-cd marvel-back
+git clone https://github.com/LilaGuill/marvel-backend
+cd marvel-backend
 ```
 
 Install packages :
@@ -56,7 +56,7 @@ npx nodemon index.js
 ## Overview
 
   <p align="center">
-    <img width="500" src="https://github.com/LilaGuill/marvel-front/blob/master/public/screen.png"alt="capture-1">
+    <img width="500" src="https://github.com/LilaGuill/marvel-frontend/blob/master/public/screen.png"alt="capture-1">
   </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ npx nodemon index.js
 
 ## Marvel Client
 
-<a href="https://github.com/LilaGuill/marvel-front">https://github.com/LilaGuill/marvel-front</a>
+<a href="https://github.com/LilaGuill/marvel-frontend.git">https://github.com/LilaGuill/marvel-frontend.git</a>
 
 ## Deployment
 
