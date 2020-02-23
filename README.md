@@ -4,6 +4,7 @@
 
 **Dependencies**
 
+- Node.js
 - Express
 - Express-formidable
 - Mongoose
@@ -16,13 +17,13 @@
 
 - Route marvel:
 
-  - search comics : axios request to Marvel api
-  - get characters : axios request to Marvel api
-  - get comics by id : axios request to Marvel api
-  - marvel api : https://developer.marvel.com/
+  - search comics : axios request to Marvel API
+  - get characters : axios request to Marvel API
+  - get comics by id : axios request to Marvel API
+  - marvel API : https://developer.marvel.com/
 
 - Route user :
-  - signup : create crypted password and token, both are saved in mongoDB Database
+  - signup : create crypted password and token, both are saved in mongoDB database
   - login : decrypted password
 
 ## Running the project
@@ -48,6 +49,7 @@ npx nodemon index.js
 
 ## Client
 
+- React
 - HTTP request with axios (get, post)
 - Hooks (useState, useEffect, useContext)
 - React Router Dom
